@@ -1,0 +1,23 @@
+{
+  "name": "emenine",
+  "version": "0.1.0",
+  "description": "project initialization",
+  "main": "emenine-cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "npm"
+  ],
+  "author": "Jason McAlpin <jason@chaiboy.com> (localhost)",
+  "license": "MIT",
+  "bin": {
+    "emenine": "./emenine-cli.js"
+  },
+  "dependencies": {
+    "meow": "^5.0.0",
+    "terminal-kit": "^1.31.3",
+    "yargs": "^14.0.0"
+  }
+}
