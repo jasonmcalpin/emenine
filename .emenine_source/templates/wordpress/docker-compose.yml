@@ -1,0 +1,35 @@
+version: "2"
+services:
+
+  DOCKERWORDPRESSTEMPLATE:
+    depends_on:
+      - db-DOCKERWORDPRESSTEMPLATE
+    image: wordpress:latest
+    ports:
+     - 8080:80
+    volumes:
+     - /tmp:/tmp
+     - ./:/var/www/html
+    tty: true
+    logging:
+      driver: "json-file"
+    environment:
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_HOST: db-DOCKERWORDPRESSTEMPLATE:3306
+    links:
+      - db-DOCKERWORDPRESSTEMPLATE
+    restart: on-failure
+
+  db-DOCKERWORDPRESSTEMPLATE:
+    image: mariadb:latest
+    ports:
+     - 3333:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+      - ./:/var/www/html
+      - ./db-DOCKERWORDPRESSTEMPLATE:/var/lib/mysql
+    restart: on-failure

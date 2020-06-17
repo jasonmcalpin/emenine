@@ -1,0 +1,14 @@
+version: "2"
+services:
+
+  DOCKERHTMLTEMPLATE:
+    image: DOCKERHTMLTEMPLATE
+    ports:
+     - 8080:80
+    volumes:
+     - /tmp:/tmp
+     - ./SourceCode/src/build:/var/www/html/website
+    tty: true
+    logging:
+      driver: "json-file"
+    restart: on-failure
